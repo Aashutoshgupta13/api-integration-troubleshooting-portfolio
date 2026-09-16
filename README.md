@@ -37,9 +37,9 @@ As the Technical Support Specialist, the investigation involves:
 - Postman
 - JSON
 - HTTP / HTTPS
+- API Authentication
 - Jira
 - GitHub
-- API Authentication
 - Root Cause Analysis
 - Incident Management
 - Technical Documentation
@@ -48,13 +48,47 @@ As the Technical Support Specialist, the investigation involves:
 
 ## Incident Scenarios
 
-| Incident | Error | Root Cause |
+| Incident | HTTP Status | Root Cause |
 |---|---|---|
-| Authentication Failure | 401 Unauthorized | Expired API token |
+| Authentication Failure | 401 Unauthorized | Expired or invalid API token |
 | Invalid Request | 400 Bad Request | Invalid or missing JSON field |
+| Successful Customer Creation | 201 Created | Valid request and successful API processing |
 | Resource Not Found | 404 Not Found | Incorrect endpoint or resource ID |
-| Server Failure | 500 Internal Server Error | Upstream/backend service issue |
+| Server Failure | 500 Internal Server Error | Upstream or backend service issue |
 | API Timeout | Timeout | Slow or unavailable upstream service |
+
+---
+
+## Postman Test Coverage
+
+The Postman collection contains API requests and automated response validation.
+
+### 401 Unauthorized
+
+Tests an authentication failure scenario using an expired or invalid bearer token.
+
+**Validation:**
+
+- HTTP response status is `401 Unauthorized`
+
+### 400 Bad Request
+
+Tests an invalid customer payload.
+
+**Validation:**
+
+- HTTP response status is `400 Bad Request`
+
+### 201 Created
+
+Tests successful customer creation.
+
+**Validations:**
+
+- HTTP response status is `201 Created`
+- Response time is below `2000ms`
+- Customer ID exists in the response
+- Customer status is `created`
 
 ---
 
