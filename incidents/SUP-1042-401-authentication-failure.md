@@ -55,6 +55,24 @@ The integration did not have an effective token-expiration monitoring or automat
 
 ## Resolution
 
+The expired authentication token was identified as the cause of the 401 Unauthorized response.
+
+The integration should be updated with a valid, active authentication token. After updating the credentials, the API request should be retested to confirm successful authentication and customer synchronization.
+
+## Validation Evidence
+
+The 401 Unauthorized response was successfully reproduced and validated in Postman.
+
+![SUP-1042 401 Test Result](../screenshots/SUP-1042-401-test-result.png)
+
+## Outcome
+
+The incident was traced to an expired authentication token.
+
+After replacing the expired credentials with valid authentication credentials, the integration can be retested to confirm successful API communication.
+
+## Resolution
+
 1. Obtained a valid authentication token.
 2. Updated the integration configuration.
 3. Re-ran the API request in Postman.
