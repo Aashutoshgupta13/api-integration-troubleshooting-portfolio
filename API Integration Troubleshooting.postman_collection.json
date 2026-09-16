@@ -1,0 +1,221 @@
+{
+  "info": {
+    "_postman_id": "95217b11-457d-45b8-a191-626a227892a6",
+    "name": "API Integration Troubleshooting",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40752189",
+    "_collection_link": "https://go.postman.co/collection/40752189-95217b11-457d-45b8-a191-626a227892a6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "SUP-1042 - 401 Expired Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response status is 401 Unauthorized\", function () {\r\n    pm.response.to.have.status(401);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token_06ft}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Smith\",\r\n  \"email\": \"john.smith@example.com\",\r\n  \"company\": \"ABC Technologies\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://httpbin.org/status/401",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "status",
+            "401"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUP-1042 - Successful Customer Creation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response status is 201 Created\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Response time is less than 2000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{bearer_token_0axj}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Smith\",\r\n  \"email\": \"john.smith@example.com\",\r\n  \"company\": \"ABC Technologies\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://httpbin.org/status/201",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "status",
+            "201"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUP-1043 - 400 Invalid Payload",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response status is 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": " {{bearer_token_0tf0}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Smith\",\r\n  \"company\": \"ABC Technologies\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://httpbin.org/status/400",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "status",
+            "400"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUP-1043 - Successful Customer Creation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response status is 201 Created\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Response time is less than 2000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": " {{bearer_token_0tf0}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Smith\",\r\n  \"email\": \"john.smith@example.com\",\r\n  \"company\": \"ABC Technologies\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://httpbin.org/status/201",
+          "protocol": "https",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "status",
+            "201"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "bearer_token_06ft",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0axj",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0tf0",
+      "secret": true
+    }
+  ]
+}
